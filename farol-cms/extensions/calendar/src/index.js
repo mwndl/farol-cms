@@ -54,7 +54,12 @@ export default (router) => {
 	  events.items.forEach(event => {
 		const eventDate = new Date(event.start.dateTime || event.start.date);
 		const dateString = eventDate.toLocaleDateString('pt-BR'); // Ex: "05/02/2025"
-		const eventHour = eventDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); // Ex: "18:30"
+		const eventHour = new Intl.DateTimeFormat('pt-BR', { 
+			hour: '2-digit', 
+			minute: '2-digit', 
+			timeZone: 'UTC' 
+		  }).format(new Date(eventDate.getTime() - 3 * 60 * 60 * 1000)); // UTC-3		  
+		  
 	  
 		let location = {
 		  title: null,
