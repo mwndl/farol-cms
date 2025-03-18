@@ -1,0 +1,22 @@
+Para criar uma nova extesão, siga o passo a passo abaixo:
+
+1. Navegue para essa pasta (extensions)
+2. Rode o comando "npx create-directus-extension@latest"
+3. Selecione essas opções:
+
+    ✔ Choose the extension type 'endpoint'
+    ✔ Choose a name for the extension '<nome>'
+    ✔ Choose the language to use 'javascript'
+    ✔ Auto install dependencies? 'Yes'
+
+4. Navegue para a pasta criada da nova extensão
+5. Rode o comando "npm run dev" e faça a edição dentro da pasta "src"
+6. Após finalizar, rode "cd ../.." para retornar a pasta raíz
+7. Inicie o projeto com o comando "npx directus start"
+8. Teste o endpoint com o caminho <url>/<nome_extensão>/<nome_rota>
+
+
+cd extensions/calendar
+npm run dev  
+cd ../..                          
+npx directus start 
