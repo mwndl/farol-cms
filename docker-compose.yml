@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  directus:
+    build: .
+    container_name: farol-cms
+    restart: unless-stopped
+    ports:
+      - "8055:8055"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      - /app/node_modules
