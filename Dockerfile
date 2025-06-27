@@ -7,7 +7,7 @@ WORKDIR /app
 # Copia os arquivos do projeto para o container
 COPY package.json package-lock.json ./
 
-# Instala as dependências globais do Directus
+# Instala as dependências do projeto
 RUN npm install
 
 # Copia o restante dos arquivos
@@ -16,5 +16,5 @@ COPY . .
 # Expõe a porta padrão do Directus (8055)
 EXPOSE 8055
 
-# Define o comando para iniciar o Directus
-CMD ["npx", "directus", "start"]
+# Executa as migrations e depois inicia o Directus
+CMD npx directus database migrate:latest && npx directus start
