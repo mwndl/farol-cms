@@ -13,8 +13,12 @@ RUN npm install
 # Copia o restante dos arquivos
 COPY . .
 
+# Copia o script entrypoint para o container e libera permissão
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
 # Expõe a porta padrão do Directus (8055)
 EXPOSE 8055
 
-# Executa as migrations e depois inicia o Directus
-CMD npx directus database migrate:latest && npx directus start
+# Usa o script como entrypoint
+ENTRYPOINT ["/app/entrypoint.sh"]
